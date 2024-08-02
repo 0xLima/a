@@ -2,15 +2,15 @@
     "name": "zapster-contracts",
     "version": "1.0.0",
     "description": "Smart Contracts for Zapster Protocol",
-    "main": "truffle-config.js"
+    "main": "truffle-config.js",
     "directories": {
         "test": "test"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "Lima"
-    "license": "ISC"
+    "author": "Lima",
+    "license": "ISC",
     "dependencies": {
         "@chainlink/contracts": "^0.5.1",
         "@openzeppelin/contracts": "^4.8.0",
@@ -20,8 +20,7 @@
         "node-gyp": "^10.2.0",
         "truffle": "^5.8.4",
         "truffle-contract-size": "^2.0.1",
-        "truffle-flatten": "^1.0.8",
-        "web3": "^4.11.1"
+        "truffle-flatten": "^1.0.8"
     },
     "devDependencies": {
         "truffle-plugin-stdjsonin": "github:mhrsalehi/truffle-plugin-stdjsonin",

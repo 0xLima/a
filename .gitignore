@@ -1,0 +1,6 @@
+# Add
+.env
+node_modules
+migrations
+.replit
+.config

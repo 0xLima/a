@@ -120,9 +120,9 @@ contract ZapsterScore is Ownable2Step, IZapsterScore {
         // collateralVolume - 15 marks
         if (_activity.activeLoansCount(user) > 2) {
             result += 15;
-        } else if (_activity.activeLoansCount(user) = 2) {
+        } else if (_activity.activeLoansCount(user) == 2) {
             result += 10;
-        } else if (_activity.activeLoansCount(user) = 1) {
+        } else if (_activity.activeLoansCount(user) == 1) {
             result += 5;
         } else if (activity.collateralVolume > 35000 * 1e18) {
             result += 0;
@@ -197,7 +197,7 @@ contract ZapsterScore is Ownable2Step, IZapsterScore {
         // defaultedTimes - 50 marks
         if (activity.defaultedTimes == 0) {
             result += 0;
-        } else if (activity.defaultedTimes = 1) {
+        } else if (activity.defaultedTimes == 1) {
             result += 15;
         } else if (activity.defaultedTimes == 2) {
             result += 25;
@@ -217,7 +217,7 @@ contract ZapsterScore is Ownable2Step, IZapsterScore {
         }
 
         // lastActive - 5 ~ 10 marks
-        uint160 currentTime = uint160(block.timestamp)
+        uint160 currentTime = uint160(block.timestamp);
 
         if (activity.lastActive == 0) {
             result += 5;
@@ -231,7 +231,7 @@ contract ZapsterScore is Ownable2Step, IZapsterScore {
             result += 10;
         }
 
-        return result
+        return result;
     }
 
     function setActivity(address activity_) public onlyOwner {

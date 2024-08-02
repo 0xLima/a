@@ -19,7 +19,7 @@ const WBNB = "0xc332fEC9Dcf2335163a597ad0e54B111EA916825"
 const BUSD = "0xEDA730654aDDb79617f085837A1F9a6F7b45f7D6"
 const NATIVE = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
 
-contract("CreateLendingOffer" async accounts => {
+contract("CreateLendingOffer", async accounts => {
     it("setValues", async () => {
         const priceFeed = await PriceFeed.deployed()
         await priceFeed.addPriceFeed(BUSD, "0x9331b55D9830EF609A2aBCfAc0FBCE050A52fdEa")
@@ -31,33 +31,33 @@ contract("CreateLendingOffer" async accounts => {
         await priceFeed.addPriceFeed(USDC, "0x90c069C4538adAc136E051052E14c1cD799C41B7")
         await priceFeed.addPriceFeed(WBNB, "0x2514895c72f50D8bd4B4F9b1110F0D6bD2c97526")
         await priceFeed.addUSDFeed("0x90c069C4538adAc136E051052E14c1cD799C41B7")
-    };
+    })
     it("setValues 2", async () => {
         const ltv = await LoanToValueRatio.deployed()
-        await ltv.setzapsterScore(ZapsterScore _address, 100, 120)
+        await ltv.setZapsterScore(ZapsterScore.address, 100, 120)
 
         const zapsterScore = await ZapsterScore.deployed()
         await zapsterScore.setActivity(Activity.address)
 
         const offerManager = await OfferManager.deployed()
-        await offerManager.setlendingPool(LendingPool.address)
+        await offerManager.setLendingPool(LendingPool.address)
 
         const loanManager = await LoanManager.deployed()
-        await loanManager.setLendingPool(LendingPool.address),
+        await loanManager.setLendingPool(LendingPool.address)
 
         const feeManager = await FeeManager.deployed()
-        await feeManager.setLendingPool(LendingPool.address),
+        await feeManager.setLendingPool(LendingPool.address)
 
         const activity = await Activity.deployed()
         await activity.setLendingPool(LendingPool.address)
     })
-    it("setValues 3",async function ( {
+    it("setValues 3", async function () {
         const lendingPool = await LendingPool.deployed()
         await lendingPool.setFeeds(
             LoanToValueRatio.address,
             Activity.address,
-            PriceFeed.address)
-        
+            PriceFeed.address
+        )
         await lendingPool.setManagers(
             LoanManager.address,
             OfferManager.address,

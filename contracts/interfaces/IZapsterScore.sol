@@ -2,5 +2,5 @@
 pragma solidity ^0.8.17;
 
 interface IZapsterScore {
-    function getScore(address.user) external view returns (uint16);
+    function getScore(address user) external view returns (uint16);
 }

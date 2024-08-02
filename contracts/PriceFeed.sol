@@ -2,6 +2,7 @@
 pragma solidity ^0.8.17;
 
 import "./libraries/Errors.sol";
+
 import "./interfaces/IPriceFeed.sol";
 
 import "@openzeppelin/contracts/access/Ownable2Step.sol";
@@ -26,11 +27,11 @@ contract PriceFeed is Ownable2Step, IPriceFeed {
     }
 
     /// @dev function for owner to add more price feeds
-    function addPriceFeed(address _tokenAddress, address chainlinkPriceFeed)
+    function addPriceFeed(address _tokenAddress, address _chainlinkPriceFeed)
         external
         onlyOwner
     {
-        feedAddresses[_tokenAddress] = chainlinkPriceFeed;
+        feedAddresses[_tokenAddress] = _chainlinkPriceFeed;
         emit PriceFeedAdded(
             block.timestamp,
             _tokenAddress,
@@ -60,13 +61,13 @@ contract PriceFeed is Ownable2Step, IPriceFeed {
         return (uint256(answer), uint8(decimal));
     }
 
-/*     function amountInUSD(address _tokenAddress, uint256 _amount)
+    function amountInUSD(address _tokenAddress, uint256 _amount)
         public
         view
         override
         returns (uint256)
     {
- /*/       return exchangeRate(_tokenAddress, USD, _amount);
+        return exchangeRate(_tokenAddress, USD, _amount);
     }
 
     function exchangeRate(
@@ -74,8 +75,8 @@ contract PriceFeed is Ownable2Step, IPriceFeed {
         address _quote,
         uint256 _amount
     ) public view override returns (uint256) {
-        (uint256 basePrice, ) = getLatestPriceUSD(base);
-        (uint256 quotePrice, ) = getLatestPriceUSD(quote);
+        (uint256 basePrice, ) = getLatestPriceUSD(_base);
+        (uint256 quotePrice, ) = getLatestPriceUSD(_quote);
 
         return (basePrice * _amount) / quotePrice;
     }
